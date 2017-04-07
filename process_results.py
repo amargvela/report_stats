@@ -22,10 +22,10 @@ def get_max_statistic(results, min_epoch, max_epoch, group, measure):
     if min_epoch > max_epoch:
         print 'Invalid epoch range; {:d} to {:d}'.format(min_epoch, max_epoch)
         exit()
-    if group not in ['train', 'dev', 'test']:
+    if group not in ['train', 'dev', 'test'] or group not in results[0]:
         print 'Invalid group: ', group
         exit()
-    if measure not in results[0]['train'].keys():
+    if measure not in results[0][group].keys():
         print 'Invalid measure: ', measure
         exit()
     max_score = -float('inf')
